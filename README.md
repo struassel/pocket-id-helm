@@ -11,7 +11,7 @@ Pocket-id Helm chart for Kubernetes
 To install the chart with the release name my-release:
 
 ```
-helm install my-release oci://ghcr.io/hobbit44/pocket-id-helm/pocket-id
+helm install my-release oci://ghcr.io/struassel/pocket-id-helm/pocket-id
 ```
 
 ### Uninstalling the Chart
@@ -25,7 +25,7 @@ The command removes all the Kubernetes components associated with the chart and 
 ## Source Code
 
 * <https://github.com/pocket-id/pocket-id>
-* <https://github.com/hobbit44/pocket-id-helm>
+* <https://github.com/struassel/pocket-id-helm>
 
 ## Values
 
