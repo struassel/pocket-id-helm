@@ -67,6 +67,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | readinessProbe.initialDelaySeconds | int | `60` |  |
 | resources | object | `{}` | Specifiy resources for the pod |
 | securityContext | object | `{}` |  |
+| service.annotations | object | `{}` | Annotations to add to the service |
 | service.port | int | `80` |  |
 | service.type | string | `"ClusterIP"` |  |
 | serviceAccount.annotations | object | `{}` | Annotations to add to the service account |
