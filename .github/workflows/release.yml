@@ -33,7 +33,7 @@ jobs:
         id: version
         uses: mikefarah/yq@master
         with:
-          cmd: yq -r '.appVersion | sub("^v"; "")' Chart.yaml
+          cmd: yq -r '.appVersion' Chart.yaml
       
       - name: Push Helm chart
         env:
