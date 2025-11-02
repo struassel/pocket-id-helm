@@ -36,6 +36,13 @@ The command removes all the Kubernetes components associated with the chart and 
 | existingConfigMap | string | `""` | Name of an existing config map containing any environment variables |
 | existingSecret | string | `""` | Name of an existing secret containing any environment variables |
 | fullnameOverride | string | `""` | The full resource name override |
+| gateway.annotations | object | `{}` | Annotations for the gateway |
+| gateway.className | string | `"example"` | Gateway class name to be used by the gateway. Mandatory |
+| gateway.enabled | bool | `false` | Enables a gateway for the application |
+| gateway.hosts[0].host | string | `"chart-example.local"` |  |
+| gateway.hosts[0].httpPort | int | `80` | HTTP port of the gateway |
+| gateway.hosts[0].httpsPort | int | `443` | HTTPS port of the gateway |
+| gateway.hosts[0].tlsSecretName | string | `"chart-example-tls"` | Name of the secret storing TLS certificate |
 | image.pullPolicy | string | `"IfNotPresent"` | The pull policy for images |
 | image.repository | string | `"ghcr.io/pocket-id/pocket-id"` | The container image to run |
 | image.tag | string | `""` | Overrides the image tag whose default is the chart version. |

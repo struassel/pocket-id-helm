@@ -87,6 +87,22 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
+gateway:
+  # -- Enables a gateway for the application
+  enabled: false
+  # -- Gateway class name to be used by the gateway. Mandatory
+  className: "example"
+  # -- Annotations for the gateway
+  annotations: {}
+  hosts:
+    - host: chart-example.local
+      # -- HTTP port of the gateway
+      httpPort: 80
+      # -- HTTPS port of the gateway
+      httpsPort: 443
+      # -- Name of the secret storing TLS certificate
+      tlsSecretName: chart-example-tls
+
 # -- Specifiy resources for the pod
 resources: {}
   # limits:
