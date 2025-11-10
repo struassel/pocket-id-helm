@@ -90,18 +90,42 @@ ingress:
 gateway:
   # -- Enables a gateway for the application
   enabled: false
+  # -- Gateway name
+  name: pocket-id-gateway
   # -- Gateway class name to be used by the gateway. Mandatory
   className: "example"
   # -- Annotations for the gateway
   annotations: {}
   hosts:
-    - host: chart-example.local
+  - host: chart-example.local
+    http:
+      # -- Name of the HTTP Listener
+      name: chart-example-local-http
       # -- HTTP port of the gateway
-      httpPort: 80
+      port: 80
+    https:
+      # -- Name of the HTTPS Listener
+      name: chart-example-local-https
       # -- HTTPS port of the gateway
-      httpsPort: 443
-      # -- Name of the secret storing TLS certificate
+      port: 443
+      # -- Name of the secret storing the TLS certificate
       tlsSecretName: chart-example-tls
+
+httproute:
+  # -- Enables HTTP & HTTPS HTTPRoute for the application
+  enabled: false
+  # -- Annotations for the HTTPRoute
+  annotations: {}
+  # -- HTTPRoute parent refs for HTTPS
+  httpsParentRefs:
+    - name: pocket-id-gateway
+      sectionName: chart-example-local-https
+  # -- HTTPRoute parent refs for HTTP
+  httpParentRefs:
+    - name: pocket-id-gateway
+      sectionName: chart-example-local-http
+  hosts:
+    - chart-example.local
 
 # -- Specifiy resources for the pod
 resources: {}

@@ -40,9 +40,17 @@ The command removes all the Kubernetes components associated with the chart and 
 | gateway.className | string | `"example"` | Gateway class name to be used by the gateway. Mandatory |
 | gateway.enabled | bool | `false` | Enables a gateway for the application |
 | gateway.hosts[0].host | string | `"chart-example.local"` |  |
-| gateway.hosts[0].httpPort | int | `80` | HTTP port of the gateway |
-| gateway.hosts[0].httpsPort | int | `443` | HTTPS port of the gateway |
-| gateway.hosts[0].tlsSecretName | string | `"chart-example-tls"` | Name of the secret storing TLS certificate |
+| gateway.hosts[0].http.name | string | `"chart-example-local-http"` | Name of the HTTP Listener |
+| gateway.hosts[0].http.port | int | `80` | HTTP port of the gateway |
+| gateway.hosts[0].https.name | string | `"chart-example-local-https"` | Name of the HTTPS Listener |
+| gateway.hosts[0].https.port | int | `443` | HTTPS port of the gateway |
+| gateway.hosts[0].https.tlsSecretName | string | `"chart-example-tls"` | Name of the secret storing the TLS certificate |
+| gateway.name | string | `"pocket-id-gateway"` | Gateway name |
+| httproute.annotations | object | `{}` | Annotations for the HTTPRoute |
+| httproute.enabled | bool | `false` | Enables HTTP & HTTPS HTTPRoute for the application |
+| httproute.hosts[0] | string | `"chart-example.local"` |  |
+| httproute.httpParentRefs | list | `[{"name":"pocket-id-gateway","sectionName":"chart-example-local-http"}]` | HTTPRoute parent refs for HTTP |
+| httproute.httpsParentRefs | list | `[{"name":"pocket-id-gateway","sectionName":"chart-example-local-https"}]` | HTTPRoute parent refs for HTTPS |
 | image.pullPolicy | string | `"IfNotPresent"` | The pull policy for images |
 | image.repository | string | `"ghcr.io/pocket-id/pocket-id"` | The container image to run |
 | image.tag | string | `""` | Overrides the image tag whose default is the chart version. |
