@@ -1,5 +1,5 @@
 {{- if and .Values.httproute.enabled .Values.httproute.hosts -}}
-{{- if .Values.httproute.httpsParentRefs -}}
+{{- if .Values.httproute.httpsParentRefs }}
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
@@ -22,7 +22,7 @@ spec:
     - name: {{ include "pocket-id.fullname" $ }}
       port: {{ $.Values.service.port }}
 {{- end }}
-{{- if .Values.httproute.httpParentRefs -}}
+{{- if .Values.httproute.httpParentRefs }}
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
