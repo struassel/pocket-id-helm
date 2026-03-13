@@ -15,20 +15,15 @@ image:
 # For more information see: https://pocket-id.org/docs/configuration/environment-variables
 config:
   {}
-  # publicAppUrl: ""
+  # appUrl: ""
   # trustProxy: ""
   # maxmindLicenseKey: ""
   # puid: ""
   # dbProvider: ""
-  # sqliteDbPath: ""
-  # postgresConnectionString: ""
+  # dbConnectionString: ""
   # uploadPath: ""
-  # internalBackendUrl: ""
   # geoliteDbPath: ""
-  # caddyPort: ""
-  # caddyDisabled: ""
   # port: ""
-  # backendPort: ""
   # host: ""
 
 # -- Name of an existing config map containing any environment variables
@@ -36,6 +31,9 @@ existingConfigMap: ""
 
 # -- Name of an existing secret containing any environment variables
 existingSecret: ""
+
+# -- Optionally set a priority class name to run the pods at. See Pod Priority and Preemption: https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/
+priorityClassName: ""
 
 # -- This is for the secretes for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 imagePullSecrets: []
@@ -54,12 +52,10 @@ serviceAccount:
 podAnnotations: {}
 podLabels: {}
 
-podSecurityContext:
-  {}
+podSecurityContext: {}
   # fsGroup: 2000
 
-securityContext:
-  {}
+securityContext: {}
   # capabilities:
   #   drop:
   #   - ALL
@@ -69,15 +65,15 @@ securityContext:
 
 service:
   type: ClusterIP
-  port: 80
+  port: 1411
+  annotations: {}
 
 ingress:
   # -- Enables an ingress for the application
   enabled: false
   className: ""
   # -- Annotations for the ingress
-  annotations:
-    {}
+  annotations: {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
@@ -92,8 +88,7 @@ ingress:
   #      - chart-example.local
 
 # -- Specifiy resources for the pod
-resources:
-  {}
+resources: {}
   # limits:
   #   cpu: 100m
   #   memory: 128Mi
