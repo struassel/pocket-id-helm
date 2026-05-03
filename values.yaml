@@ -167,6 +167,9 @@ persistence:
   accessMode: ReadWriteOnce
   size: 8Gi
 
+enterprise:
+  enabled: false
+
 # -- Additional volumes on the pod definition.
 volumes: []
 # - name: foo

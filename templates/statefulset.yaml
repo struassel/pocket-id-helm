@@ -60,9 +60,11 @@ spec:
             {{- toYaml .Values.readinessProbe | nindent 12 }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          {{- if and .Values.persistence.enabled (not .Values.enterprise.enabled) }}
           volumeMounts:
             - name: {{ include "pocket-id.fullname" . }}-data
               mountPath: /app/data
+          {{- end }}
             {{- with .Values.volumeMounts }}
               {{- toYaml . | nindent 12 }}
             {{- end }}
