@@ -33,6 +33,7 @@ The command removes all the Kubernetes components associated with the chart and 
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
 | config | object | `{}` | Pocket-id configuration variables For more information see: https://pocket-id.org/docs/configuration/environment-variables |
+| enterprise.enabled | bool | `false` |  |
 | existingConfigMap | string | `""` | Name of an existing config map containing any environment variables |
 | existingSecret | string | `""` | Name of an existing secret containing any environment variables |
 | fullnameOverride | string | `""` | The full resource name override |
